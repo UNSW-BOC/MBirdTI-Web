@@ -9,7 +9,6 @@ defineProps<{
     <span class="btn-text">
       <slot>Text</slot>
     </span>
-
     <span class="btn-icon" aria-hidden="true"> > </span>
   </button>
 </template>
@@ -27,16 +26,39 @@ defineProps<{
   border-radius: 32px;
   border: none;
 
-  display: inline-flex;
+  display: inline-flex; /* ✅ flex */
   align-items: center;
+  justify-content: center; /* 内容整体居中 */
+  gap: 8px;
   cursor: pointer;
   user-select: none;
 }
 
-/* ===== Text ===== */
+/* ===== Icon  ===== */
+.btn-icon {
+  width: 310px;
+  height: 48px;
+  border-radius: 32px;
+
+  border: none;
+  padding: 0 24px;
+
+  display: inline-flex; /* ✅ flex */
+  align-items: center;
+
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+
+  cursor: pointer;
+  user-select: none;
+  color: #ffffff;
+}
+
+/* ===== Text ===== */ /* 注意：这里放弃absolute定位align有问题 但语言的text又不是固定的 */
 .btn-text {
-  position: absolute;
-  left: 24px;
+  right: 24px;
   top: 14px;
 
   width: 108px;
@@ -46,34 +68,11 @@ defineProps<{
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-family: 'Poppins', system-ui, sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
 
-  color: #ffffff;
-}
-
-/* ===== Icon / arrow-right ===== */
-.btn-icon {
-  width: 310px;
-  height: 48px;
-  border-radius: 32px;
-
-  border: none;
-  padding: 0 24px;
-
-  display: inline-flex;
-  align-items: center;
-
-  font-family: 'Poppins', system-ui, sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 20px;
-
-  cursor: pointer;
-  user-select: none;
   color: #ffffff;
 }
 
