@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import PrimaryButton from '@/components/button/PrimaryButton.vue'
 import StepNavigation from '@/components/button/StepButton.vue'
+import RestartButton from '@/components/button/RestartButton.vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 
@@ -19,7 +20,6 @@ function goNext() {
   </div>
 
   <PrimaryButton @click="router.push('/start')"> Start </PrimaryButton>
-
   <PrimaryButton disabled> Disabled </PrimaryButton>
 
   <StepNavigation variant="default" @prev="goPrev" @next="goNext" />
@@ -28,6 +28,9 @@ function goNext() {
 
   <!-- 或只禁用某一边 -->
   <StepNavigation variant="default" prevDisabled @next="goNext" />
+
+  <RestartButton @click="router.push('/start')"> Restart </RestartButton>
+  <RestartButton disabled> Disabled </RestartButton>
 </template>
 
 <style scoped>
