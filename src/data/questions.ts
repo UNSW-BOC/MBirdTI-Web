@@ -1,9 +1,9 @@
 // 这个文件定义了问题和选项的数据结构，以及具体的问题数据
 
-import cityImg from '@/assets/images/selectioncards/city.png'
-import forestImg from '@/assets/images/selectioncards/forest.png'
-import grasslandImg from '@/assets/images/selectioncards/grassland.png'
-import wetlandImg from '@/assets/images/selectioncards/wetland.png'
+import cityImg from '@/assets/images/selectioncard/city.png'
+import forestImg from '@/assets/images/selectioncard/forest.png'
+import grasslandImg from '@/assets/images/selectioncard/grassland.png'
+import wetlandImg from '@/assets/images/selectioncard/wetland.png'
 
 export type Option =
   | {

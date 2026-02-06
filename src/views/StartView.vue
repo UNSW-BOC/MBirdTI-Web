@@ -6,6 +6,9 @@ import OptionButton from '@/components/button/OptionButtion.vue'
 import LanguageOptionButton from '@/components/button/LanguageOptionButton.vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
+function goQuiz() {
+  router.push('/quiz')
+}
 
 function goPrev() {
   console.log('Go to previous step')
@@ -17,7 +20,7 @@ function goNext() {
 </script>
 
 <template>
-  <div class="start">
+  <div class="start" @click="goQuiz">
     <h1>Start Page</h1>
   </div>
   <img class="card" src="@/assets/images/card/FlipTaroCardfront.svg" alt="" />
