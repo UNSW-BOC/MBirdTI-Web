@@ -1,1 +1,0 @@
-import{_ as t,o as a,c as s,a as c}from"./index-BfEP2mC7.js";const o={},r={class:"start"};function n(_,e){return a(),s("div",r,[...e[0]||(e[0]=[c("h1",null,"Start Page",-1)])])}const l=t(o,[["render",n],["__scopeId","data-v-e331c6ca"]]);export{l as default};
