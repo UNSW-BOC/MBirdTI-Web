@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
+import bgUrl from '@/assets/images/bg/which_bird_are_you.png'
 
 const router = useRouter()
-const bgUrl = `${import.meta.env.BASE_URL}which_bird_are_you.png`
 
 function goStart() {
   router.push('/start')
