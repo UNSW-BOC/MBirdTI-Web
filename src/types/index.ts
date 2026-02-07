@@ -14,4 +14,7 @@ export interface BirdResult {
   
   imageUrlCn: string; // e.g. '/src/assets/images/birds/ISTJ_CN.png'
   imageUrlEn: string; // e.g. '/src/assets/images/birds/ISTJ_EN.png'
+
+  tagsCn?: string[]; // e.g. ['现实派', '秩序控', '定心石']
+  tagsEn?: string[]; // e.g. ['Realist', 'Orderly', 'Anchor']
 }

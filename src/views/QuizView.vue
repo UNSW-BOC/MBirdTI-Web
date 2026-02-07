@@ -90,30 +90,36 @@ function calculateAndNavigate() {
     }
   })
 
-  // Calculate dimensions
+  // Calculate dimensions by summing positive and negative axis contributions
+  // Positive Axis: E, N, T, J
+  // Negative Axis: I, S, F, P
+  // Note: Values in questions.ts are already signed (e.g., I: -4, S: -1)
+  
   // E vs I
-  const dimIE = scores.E - scores.I // Positive = E, Negative = I
+  const dimIE = scores.E + scores.I // Positive = E, Negative = I
   // S vs N
-  const dimSN = scores.S - scores.N // Positive = S, Negative = N
+  const dimSN = scores.N + scores.S // Positive = N, Negative = S
   // T vs F
-  const dimTF = scores.T - scores.F // Positive = T, Negative = F
+  const dimTF = scores.T + scores.F // Positive = T, Negative = F
   // J vs P
-  const dimJP = scores.J - scores.P // Positive = J, Negative = P
+  const dimJP = scores.J + scores.P // Positive = J, Negative = P
 
   // Determine type
   const type = [
     dimIE >= 0 ? 'E' : 'I',
-    dimSN >= 0 ? 'S' : 'N',
+    dimSN >= 0 ? 'N' : 'S',
     dimTF >= 0 ? 'T' : 'F',
     dimJP >= 0 ? 'J' : 'P'
   ].join('')
   
-  // Calculate percentages (Mock calculation logic for now to match max theoretical offset mentioned in md)
+  // Calculate percentages (0-100 of the Positive Axis trait)
   // Max offsets: IE: 8, SN: 8, TF: 8, JP: 6
-  const pctIE = Math.min(100, Math.round(50 + (Math.abs(dimIE) / 8) * 50))
-  const pctSN = Math.min(100, Math.round(50 + (Math.abs(dimSN) / 8) * 50))
-  const pctTF = Math.min(100, Math.round(50 + (Math.abs(dimTF) / 8) * 50))
-  const pctJP = Math.min(100, Math.round(50 + (Math.abs(dimJP) / 6) * 50))
+  // Formula: 50 + (Value / Max) * 50
+  // Result: 0% = Max Negative (I/S/F/P), 100% = Max Positive (E/N/T/J)
+  const pctIE = Math.min(100, Math.max(0, Math.round(50 + (dimIE / 8) * 50)))
+  const pctSN = Math.min(100, Math.max(0, Math.round(50 + (dimSN / 8) * 50)))
+  const pctTF = Math.min(100, Math.max(0, Math.round(50 + (dimTF / 8) * 50)))
+  const pctJP = Math.min(100, Math.max(0, Math.round(50 + (dimJP / 6) * 50)))
 
   // Navigate to result with type and percentages
   // For simplicity, passing type via query. Ideally use store.

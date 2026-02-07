@@ -47,11 +47,10 @@
                    </div>
                    <div class="back-bird-name">{{ isZh ? bird?.birdNameCn : bird?.birdNameEn }}</div>
                    <div class="tags">
-                      <!-- Mock tags for now as they are not in CSV -->
-                      <span class="tag">现实派</span>
-                      <span class="tag">秩序控</span>
-                      <span class="tag">定心石</span>
-                   </div>
+                    <span class="tag" v-for="(tag, index) in (isZh ? bird?.tagsCn : bird?.tagsEn)" :key="index">
+                      {{ tag }}
+                    </span>
+                  </div>
                  </div>
                </div>
             </div>
@@ -80,28 +79,28 @@
         <!-- MBTI Dimensions (Dynamic based on scores) -->
         <div class="dimensions-card">
            <div class="dim-row blue">
-             <div class="dim-label">{{ isZh ? '内向 (I) / 外向 (E)' : 'Introvert (I) / Extrovert (E)' }}</div>
-             <div class="dim-val">{{ pIE }}%</div>
-             <div class="dim-desc">{{ isZh ? (pIE > 50 ? '更倾向从内在世界获取能量' : '更倾向从外部世界获取能量') : (pIE > 50 ? 'Gains energy from inner world' : 'Gains energy from outer world') }}</div>
-             <div class="dim-bar-bg"><div class="dim-bar-fg" :style="{ width: pIE + '%' }"></div></div>
+             <div class="dim-label">{{ isZh ? (pIE > 50 ? '外向 (E)' : '内向 (I)') : (pIE > 50 ? 'Extrovert (E)' : 'Introvert (I)') }}</div>
+             <div class="dim-val">{{ pIE > 50 ? pIE : (100 - pIE) }}%</div>
+             <div class="dim-desc">{{ isZh ? (pIE > 50 ? '更倾向从外部世界获取能量' : '更倾向从内在世界获取能量') : (pIE > 50 ? 'Gains energy from outer world' : 'Gains energy from inner world') }}</div>
+             <div class="dim-bar-bg"><div class="dim-bar-fg" :style="{ width: (pIE > 50 ? pIE : (100 - pIE)) + '%' }"></div></div>
            </div>
            <div class="dim-row green">
-             <div class="dim-label">{{ isZh ? '实感 (S) / 直觉 (N)' : 'Sensing (S) / Intuition (N)' }}</div>
-             <div class="dim-val">{{ pSN }}%</div>
-             <div class="dim-desc">{{ isZh ? (pSN > 50 ? '更关注具体事实、细节' : '更关注抽象概念、未来可能性') : (pSN > 50 ? 'Focuses on facts and details' : 'Focuses on concepts and possibilities') }}</div>
-             <div class="dim-bar-bg"><div class="dim-bar-fg" :style="{ width: pSN + '%' }"></div></div>
+             <div class="dim-label">{{ isZh ? (pSN > 50 ? '直觉 (N)' : '实感 (S)') : (pSN > 50 ? 'Intuition (N)' : 'Sensing (S)') }}</div>
+             <div class="dim-val">{{ pSN > 50 ? pSN : (100 - pSN) }}%</div>
+             <div class="dim-desc">{{ isZh ? (pSN > 50 ? '更关注抽象概念、未来可能性' : '更关注具体事实、细节') : (pSN > 50 ? 'Focuses on concepts and possibilities' : 'Focuses on facts and details') }}</div>
+             <div class="dim-bar-bg"><div class="dim-bar-fg" :style="{ width: (pSN > 50 ? pSN : (100 - pSN)) + '%' }"></div></div>
            </div>
            <div class="dim-row purple">
-             <div class="dim-label">{{ isZh ? '思考 (T) / 情感 (F)' : 'Thinking (T) / Feeling (F)' }}</div>
-             <div class="dim-val">{{ pTF }}%</div>
+             <div class="dim-label">{{ isZh ? (pTF > 50 ? '思考 (T)' : '情感 (F)') : (pTF > 50 ? 'Thinking (T)' : 'Feeling (F)') }}</div>
+             <div class="dim-val">{{ pTF > 50 ? pTF : (100 - pTF) }}%</div>
              <div class="dim-desc">{{ isZh ? (pTF > 50 ? '决策时更依赖逻辑' : '决策时更依赖个人价值观') : (pTF > 50 ? 'Decides based on logic' : 'Decides based on personal values') }}</div>
-             <div class="dim-bar-bg"><div class="dim-bar-fg" :style="{ width: pTF + '%' }"></div></div>
+             <div class="dim-bar-bg"><div class="dim-bar-fg" :style="{ width: (pTF > 50 ? pTF : (100 - pTF)) + '%' }"></div></div>
            </div>
            <div class="dim-row yellow">
-             <div class="dim-label">{{ isZh ? '判断 (J) / 感知 (P)' : 'Judging (J) / Perceiving (P)' }}</div>
-             <div class="dim-val">{{ pJP }}%</div>
-             <div class="dim-desc">{{ isZh ? (pJP > 50 ? '偏好结构化、计划性' : '偏好灵活性、自发性') : (pJP > 50 ? 'Prefers structure and planning' : 'Prefers flexibility and spontaneity') }}</div>
-             <div class="dim-bar-bg"><div class="dim-bar-fg" :style="{ width: pJP + '%' }"></div></div>
+             <div class="dim-label">{{ isZh ? (pJP > 50 ? '判断 (J)' : '感知 (P)') : (pJP > 50 ? 'Judging (J)' : 'Perceiving (P)') }}</div>
+             <div class="dim-val">{{ pJP > 50 ? pJP : (100 - pJP) }}%</div>
+             <div class="dim-desc">{{ isZh ? (pJP > 50 ? '倾向于计划和秩序' : '倾向于灵活和即兴') : (pJP > 50 ? 'Prefers planning and order' : 'Prefers flexibility and spontaneity') }}</div>
+             <div class="dim-bar-bg"><div class="dim-bar-fg" :style="{ width: (pJP > 50 ? pJP : (100 - pJP)) + '%' }"></div></div>
            </div>
         </div>
       </div>

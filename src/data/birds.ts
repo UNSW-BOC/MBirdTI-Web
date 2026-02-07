@@ -56,7 +56,9 @@ As Australia's largest native bird, flightless emus traverse vast plains with en
 
 Folklore claims that emus “predict rain” through their sensitivity to distant thunder, reflecting the ISTJ’s reliance on facts, experience, and verifiable data: steadfast, practical, and grounded.`,
     imageUrlCn: ISTJ_CN_IMG,
-    imageUrlEn: ISTJ_EN_IMG
+    imageUrlEn: ISTJ_EN_IMG,
+    tagsCn: ['现实派', '秩序控', '定心石'],
+    tagsEn: ['Realist', 'Orderly', 'Anchor']
   },
   {
     id: "ISFJ",
@@ -78,7 +80,9 @@ Tawny frogmouths are masters of camouflage. They have a protective plumage which
 
 In relationships, tawny frogmouths form lifelong pairs, sharing nesting duties and remaining loyal to the same territory year after year. This enduring, nurturing bond reflects the ISFJ’s essence, showing how ISFJs build security through quiet consistency, loyalty, and dependable care.`,
     imageUrlCn: ISFJ_CN_IMG,
-    imageUrlEn: ISFJ_EN_IMG
+    imageUrlEn: ISFJ_EN_IMG,
+    tagsCn: ['守护者', '细腻', '奉献'],
+    tagsEn: ['Protector', 'Detailed', 'Devoted']
   },
   {
     id: "INFJ",
@@ -100,7 +104,9 @@ The Regent Honeyeater is one of Australia’s rarest birds, with fewer than 300 
 
 Though fragile, the conservation of Regent Honeyeaters has the potential to protect entire ecosystems. Delicate yet purposeful, their presence inspires hope and ecological balance, just as INFJs uphold systemic harmony through insight and idealism.`,
     imageUrlCn: INFJ_CN_IMG,
-    imageUrlEn: INFJ_EN_IMG
+    imageUrlEn: INFJ_EN_IMG,
+    tagsCn: ['理想家', '洞察力', '共情'],
+    tagsEn: ['Idealist', 'Insightful', 'Empathetic']
   },
   {
     id: "INTJ",
@@ -122,7 +128,9 @@ Powerful owls are Australia's largest species of owl, silently ruling the night 
 
 With their lifelong mates, powerful owls defend, maintain and optimise a single territory for decades, reflecting the INTJ tendency to build durable systems, accumulate structural advantages, and reshape their environment over time.`,
     imageUrlCn: INTJ_CN_IMG,
-    imageUrlEn: INTJ_EN_IMG
+    imageUrlEn: INTJ_EN_IMG,
+    tagsCn: ['战略家', '独立', '远见'],
+    tagsEn: ['Strategist', 'Independent', 'Visionary']
   },
   {
     id: "ISTP",
@@ -144,7 +152,9 @@ Satin bowerbirds represent rational, hands-on craftsmen analogous to the ISTP. T
 
 Satin bowerbirds value results over permanence. They do do not maintain the bower indefinitely after mating, reflecting the ISTP mindset of acting decisively, avoiding abstract speculation, and validating ideas through direct action.`,
     imageUrlCn: ISTP_CN_IMG,
-    imageUrlEn: ISTP_EN_IMG
+    imageUrlEn: ISTP_EN_IMG,
+    tagsCn: ['巧匠', '冷静', '务实'],
+    tagsEn: ['Virtuoso', 'Cool', 'Pragmatic']
   },
   {
     id: "ISFP",
@@ -166,7 +176,9 @@ Embodying the emotional artistic creator, superb lyrebirds replicates chainsaws,
 
 Despite their striking performances, superb lyrebirds live secretive and independent  day-to-day lives, avoiding attention and remaining true to their inner values. This behavior symbolises the ISFP spirit of freedom, authenticity, and the creation of beauty through both perception and action.`,
     imageUrlCn: ISFP_CN_IMG,
-    imageUrlEn: ISFP_EN_IMG
+    imageUrlEn: ISFP_EN_IMG,
+    tagsCn: ['探险家', '温和', '艺术'],
+    tagsEn: ['Explorer', 'Gentle', 'Artistic']
   },
   {
     id: "INFP",
@@ -188,7 +200,9 @@ Superb fairywrens appear as colourful “romantic poets” of the forest: small 
 
 Superb fairywrens show remarkable empathy, often caring for other couples' chicks, while some adults will perform a “rodent-run” to lure predators away from nests. This selfless protection reflects the INFP’s value-driven courage. Though delicate, it builds a kinder world through compassion, just like the INFP, who remains soft, sincere, and compassionately resilient even in harsh environments.`,
     imageUrlCn: INFP_CN_IMG,
-    imageUrlEn: INFP_EN_IMG
+    imageUrlEn: INFP_EN_IMG,
+    tagsCn: ['治愈者', '纯粹', '诗意'],
+    tagsEn: ['Healer', 'Pure', 'Poetic']
   },
   {
     id: "INTP",
@@ -210,7 +224,9 @@ Over the outback, black-shouldered kites use their exceptional hovering ability 
 
 Black-shouldered kites efficiently use air currents to conserve energy, gliding rather than flapping and even exchanging food mid-air with their partners, reflecting the INTP's fascination with systems, efficiency, and structural mechanisms. In the wilderness, they remain independent and mentally sharp, symbolising a quiet yet incisive intelligence that seeks optimal solutions through reasoning, much like the INTP, who dissects reality with curiosity and logical clarity.`,
     imageUrlCn: INTP_CN_IMG,
-    imageUrlEn: INTP_EN_IMG
+    imageUrlEn: INTP_EN_IMG,
+    tagsCn: ['思想家', '逻辑', '好奇'],
+    tagsEn: ['Thinker', 'Logical', 'Curious']
   },
   {
     id: "ESTP",
@@ -232,7 +248,9 @@ Australian magpies are highly social and energetic. They wrestle, play, and bond
 
 Thriving in urban settings, Australian magpies adapt instantly to change. Always alert and responsive, they trust instinct over plans. The magpie embodies the ESTP “Entrepreneur”: bold, resourceful, and mastering the present through hands-on experience and fearless engagement.`,
     imageUrlCn: ESTP_CN_IMG,
-    imageUrlEn: ESTP_EN_IMG
+    imageUrlEn: ESTP_EN_IMG,
+    tagsCn: ['行动派', '无畏', '活力'],
+    tagsEn: ['Doer', 'Fearless', 'Energetic']
   },
   {
     id: "ESFP",
@@ -254,7 +272,9 @@ Rainbow lorikeets act as dazzling social experts of the forest, displaying vivid
 
 Highly adaptable to cities, rainbow lorikeets can even use human activity to create new feeding and social opportunities. Their presence is always vibrant, warm, and inclusive. This captures the character of the ESFP: living fully in the moment, and spreading delight through color, sound, and spontaneous, heartfelt interaction.`,
     imageUrlCn: ESFP_CN_IMG,
-    imageUrlEn: ESFP_EN_IMG
+    imageUrlEn: ESFP_EN_IMG,
+    tagsCn: ['表演者', '热情', '乐天'],
+    tagsEn: ['Performer', 'Enthusiastic', 'Optimistic']
   },
   {
     id: "ENFP",
@@ -276,7 +296,9 @@ Laughing kookaburras are famous for their loud, contagious laughter-like call, w
 
 Rather than heated competition, laughing kookaburras unite through warmth and expression, symbolising a free, joyful approach to life, just like ENFPs, who use imagination and laughter to bridge divides and spread vitality.`,
     imageUrlCn: ENFP_CN_IMG,
-    imageUrlEn: ENFP_EN_IMG
+    imageUrlEn: ENFP_EN_IMG,
+    tagsCn: ['追梦人', '灵感', '感染力'],
+    tagsEn: ['Dreamer', 'Inspiring', 'Charismatic']
   },
   {
     id: "ENTP",
@@ -298,7 +320,9 @@ As an opportunistic feeder, whistling kites scavenge and steal boldly, turning t
 
 Their sharp whistle cuts through skies, announcing their presence. Although they are not the strongest bird of prey, they thrive via adaptability and clever risk-taking. Like ENTPs, they challenge norms with restless curiosity, reshaping possibilities through their wit and unconventional thinking.`,
     imageUrlCn: ENTP_CN_IMG,
-    imageUrlEn: ENTP_EN_IMG
+    imageUrlEn: ENTP_EN_IMG,
+    tagsCn: ['发明家', '机智', '挑战'],
+    tagsEn: ['Innovator', 'Witty', 'Challenger']
   },
   {
     id: "ESTJ",
@@ -320,7 +344,9 @@ Australian pelicans display strong organisational behaviour, using their large b
 
 Dependable and methodical, Australian pelicans strengthen group stability through routine and responsibility, much like the ESTJ, who constructs and protects functional social systems through practicality and discipline.`,
     imageUrlCn: ESTJ_CN_IMG,
-    imageUrlEn: ESTJ_EN_IMG
+    imageUrlEn: ESTJ_EN_IMG,
+    tagsCn: ['管家', '果断', '高效'],
+    tagsEn: ['Executive', 'Decisive', 'Efficient']
   },
   {
     id: "ESFJ",
@@ -342,7 +368,9 @@ Australian white ibises live in dense social groups in both cities and wetlands,
 
 Even in complex human environments, Australian white ibises maintain strong social bonds through consistent interaction. They symbolize a type of dependable care seen in the ESFJ, who nurtures belonging and cohesion through consistent dedication.`,
     imageUrlCn: ESFJ_CN_IMG,
-    imageUrlEn: ESFJ_EN_IMG
+    imageUrlEn: ESFJ_EN_IMG,
+    tagsCn: ['东道主', '热心', '和谐'],
+    tagsEn: ['Host', 'Warm', 'Harmonious']
   },
   {
     id: "ENFJ",
@@ -364,7 +392,9 @@ Sulphur-crested cockatoos show strong collective responsibility by assigning sen
 
 Expressive and empathetic, sulphur-crested cockatoos build collective capability. Their loud calls and bold presence rally attention toward common goals. Akin to the ENFJ, they inspire change through mentorship, moral clarity, and an unwavering belief in people’s potential to grow together.`,
     imageUrlCn: ENFJ_CN_IMG,
-    imageUrlEn: ENFJ_EN_IMG
+    imageUrlEn: ENFJ_EN_IMG,
+    tagsCn: ['导师', '感召', '利他'],
+    tagsEn: ['Mentor', 'Inspiring', 'Altruistic']
   },
   {
     id: "ENTJ",
@@ -386,6 +416,8 @@ Noisy miners are famous for their coordinated collective action through ordered 
 
 Beyond sheer force, the noisy miner mobilises resources to maintain order, symbolising results-oriented leadership. Like ENTJs, they lead with vision, decisiveness, and structured force to achieve collective dominance and long-term control.`,
     imageUrlCn: ENTJ_CN_IMG,
-    imageUrlEn: ENTJ_EN_IMG
+    imageUrlEn: ENTJ_EN_IMG,
+    tagsCn: ['统帅', '决断', '宏图'],
+    tagsEn: ['Commander', 'Decisive', 'Ambitious']
   }
 ];
