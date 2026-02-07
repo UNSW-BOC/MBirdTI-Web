@@ -13,10 +13,48 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 import { ref } from 'vue'
 
 const isFlipped = ref(false)
+
+const toggleFlip = () => {
+  isFlipped.value = !isFlipped.value
+}
+</script> -->
+
+<script setup lang="ts">
+import { ref, watch, computed } from 'vue'
+
+const props = defineProps<{
+  flipped?: boolean
+}>()
+
+const emit = defineEmits<{
+  (e: 'update:flipped', value: boolean): void
+}>()
+
+// 内部状态
+const innerFlipped = ref(false)
+
+// 如果父组件传了 flipped，就以父组件为准
+watch(
+  () => props.flipped,
+  (val) => {
+    if (typeof val === 'boolean') {
+      innerFlipped.value = val
+    }
+  },
+  { immediate: true },
+)
+
+const isFlipped = computed({
+  get: () => innerFlipped.value,
+  set: (val: boolean) => {
+    innerFlipped.value = val
+    emit('update:flipped', val)
+  },
+})
 
 const toggleFlip = () => {
   isFlipped.value = !isFlipped.value
@@ -63,9 +101,9 @@ const toggleFlip = () => {
 
 /* Back is rotated 180deg initially */
 .flip-card-back {
-  background-color: #F6F1E5; /* Match card background */
+  background-color: #f6f1e5; /* Match card background */
   transform: rotateY(180deg);
   /* Add subtle shadow or border if needed to distinguish back */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 </style>

@@ -22,7 +22,7 @@
 
       <!-- Flip Card Area -->
       <div class="card-area">
-        <FlipCard class="bird-card">
+        <FlipCard class="bird-card" v-model:flipped="cardFlipped">
           <template #front>
             <div class="card-face card-front">
               <img
@@ -285,7 +285,14 @@ const handleRestart = () => {
 // }
 
 import html2canvas from 'html2canvas'
-import { ref } from 'vue'
+
+import { ref, nextTick } from 'vue'
+
+const cardFlipped = ref(false)
+
+function wait(ms: number) {
+  return new Promise<void>((resolve) => setTimeout(resolve, ms))
+}
 
 const captureRef = ref<HTMLElement | null>(null)
 
@@ -311,87 +318,173 @@ function isIOSSafari() {
   return iOS && webkit && notCriOS && notFxiOS
 }
 
+// const handleSave = async () => {
+//   const root = captureRef.value
+//   if (!root) return
+
+//   // 等字体加载完，避免错位
+//   if (document.fonts?.ready) await document.fonts.ready
+
+//   // 处理 fixed header（避免错位/重复）
+//   const header = root.querySelector('.header') as HTMLElement | null
+//   const oldPos = header?.style.position
+//   if (header) header.style.position = 'absolute'
+
+//   const dpr = Math.min(window.devicePixelRatio || 1, 3)
+
+//   const canvas = await html2canvas(root, {
+//     backgroundColor: '#F6F1E5',
+//     scale: dpr,
+//     useCORS: true,
+//     allowTaint: false,
+
+//     // ✅ 截全：用元素完整尺寸
+//     width: root.scrollWidth,
+//     height: root.scrollHeight,
+//     windowWidth: root.scrollWidth,
+//     windowHeight: root.scrollHeight,
+
+//     scrollX: 0,
+//     scrollY: 0,
+//   })
+
+//   // 恢复 header
+//   if (header) header.style.position = oldPos || 'fixed'
+
+//   const dataUrl = canvas.toDataURL('image/png', 1.0)
+//   const blob = dataURLToBlob(dataUrl)
+//   const fileName = 'mbti-result.png'
+//   const file = new File([blob], fileName, { type: 'image/png' })
+
+//   // 1) 优先 Web Share（最像“保存到手机”）
+//   type NavigatorWithShare = Navigator & {
+//     canShare?: (data: { files?: File[] }) => boolean
+//     share?: (data: { files?: File[]; title?: string }) => Promise<void>
+//   }
+
+//   const nav = navigator as NavigatorWithShare
+
+//   if (
+//     typeof nav.canShare === 'function' &&
+//     nav.canShare({ files: [file] }) &&
+//     typeof nav.share === 'function'
+//   ) {
+//     try {
+//       await nav.share({ files: [file], title: 'Result' })
+//       return
+//     } catch {
+//       // ignore
+//     }
+//   }
+
+//   // 2) 非 iOS Safari：尝试下载（Android Chrome / 桌面基本 OK）
+//   if (!isIOSSafari()) {
+//     const url = URL.createObjectURL(blob)
+//     const a = document.createElement('a')
+//     a.href = url
+//     a.download = fileName
+//     document.body.appendChild(a)
+//     a.click()
+//     a.remove()
+//     URL.revokeObjectURL(url)
+//     return
+//   }
+
+//   // 3) iOS Safari 兜底：打开图片页，让用户长按“存储图像”
+//   // （这就是 iOS 浏览器里最稳定的“保存到相册”方式）
+//   const w = window.open('')
+//   if (w) {
+//     w.document.write(`<img src="${dataUrl}" style="max-width:100%;height:auto" />`)
+//     w.document.title = 'Long press to save'
+//   } else {
+//     // 弹窗被拦截时：直接跳转
+//     location.href = dataUrl
+//   }
+// }
+
 const handleSave = async () => {
   const root = captureRef.value
   if (!root) return
 
-  // 等字体加载完，避免错位
-  if (document.fonts?.ready) await document.fonts.ready
+  // ✅ 记录用户当前看到的状态
+  const prevFlipped = cardFlipped.value
 
-  // 处理 fixed header（避免错位/重复）
-  const header = root.querySelector('.header') as HTMLElement | null
-  const oldPos = header?.style.position
-  if (header) header.style.position = 'absolute'
+  try {
+    // 等字体加载（你之前已经处理过）
+    if (document.fonts?.ready) await document.fonts.ready
 
-  const dpr = Math.min(window.devicePixelRatio || 1, 3)
+    // ✅ 强制翻到背面
+    cardFlipped.value = true
+    await nextTick()
+    // 等动画完成（你的 transition 是 0.6s）
+    await wait(650)
 
-  const canvas = await html2canvas(root, {
-    backgroundColor: '#F6F1E5',
-    scale: dpr,
-    useCORS: true,
-    allowTaint: false,
+    // ======= 开始截图 =======
+    const dpr = Math.min(window.devicePixelRatio || 1, 3)
+    const canvas = await html2canvas(root, {
+      backgroundColor: '#F6F1E5',
+      scale: dpr,
+      useCORS: true,
+      allowTaint: false,
+      width: root.scrollWidth,
+      height: root.scrollHeight,
+      windowWidth: root.scrollWidth,
+      windowHeight: root.scrollHeight,
+      scrollX: 0,
+      scrollY: 0,
+    })
 
-    // ✅ 截全：用元素完整尺寸
-    width: root.scrollWidth,
-    height: root.scrollHeight,
-    windowWidth: root.scrollWidth,
-    windowHeight: root.scrollHeight,
+    const dataUrl = canvas.toDataURL('image/png', 1.0)
+    const blob = dataURLToBlob(dataUrl)
+    const fileName = 'mbti-result.png'
+    const file = new File([blob], fileName, { type: 'image/png' })
 
-    scrollX: 0,
-    scrollY: 0,
-  })
-
-  // 恢复 header
-  if (header) header.style.position = oldPos || 'fixed'
-
-  const dataUrl = canvas.toDataURL('image/png', 1.0)
-  const blob = dataURLToBlob(dataUrl)
-  const fileName = 'mbti-result.png'
-  const file = new File([blob], fileName, { type: 'image/png' })
-
-  // 1) 优先 Web Share（最像“保存到手机”）
-  type NavigatorWithShare = Navigator & {
-    canShare?: (data: { files?: File[] }) => boolean
-    share?: (data: { files?: File[]; title?: string }) => Promise<void>
-  }
-
-  const nav = navigator as NavigatorWithShare
-
-  if (
-    typeof nav.canShare === 'function' &&
-    nav.canShare({ files: [file] }) &&
-    typeof nav.share === 'function'
-  ) {
-    try {
-      await nav.share({ files: [file], title: 'Result' })
-      return
-    } catch {
-      // ignore
+    // 1) 优先 Web Share（最像“保存到手机”）
+    type NavigatorWithShare = Navigator & {
+      canShare?: (data: { files?: File[] }) => boolean
+      share?: (data: { files?: File[]; title?: string }) => Promise<void>
     }
-  }
 
-  // 2) 非 iOS Safari：尝试下载（Android Chrome / 桌面基本 OK）
-  if (!isIOSSafari()) {
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
-    a.download = fileName
-    document.body.appendChild(a)
-    a.click()
-    a.remove()
-    URL.revokeObjectURL(url)
-    return
-  }
+    const nav = navigator as NavigatorWithShare
 
-  // 3) iOS Safari 兜底：打开图片页，让用户长按“存储图像”
-  // （这就是 iOS 浏览器里最稳定的“保存到相册”方式）
-  const w = window.open('')
-  if (w) {
-    w.document.write(`<img src="${dataUrl}" style="max-width:100%;height:auto" />`)
-    w.document.title = 'Long press to save'
-  } else {
-    // 弹窗被拦截时：直接跳转
-    location.href = dataUrl
+    if (
+      typeof nav.canShare === 'function' &&
+      nav.canShare({ files: [file] }) &&
+      typeof nav.share === 'function'
+    ) {
+      try {
+        await nav.share({ files: [file], title: 'Result' })
+        return
+      } catch {
+        // ignore
+      }
+    }
+
+    // 2) 非 iOS Safari：尝试下载（Android Chrome / 桌面基本 OK）
+    if (!isIOSSafari()) {
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = fileName
+      document.body.appendChild(a)
+      a.click()
+      a.remove()
+      URL.revokeObjectURL(url)
+      return
+    }
+    // 3) iOS Safari 兜底：打开图片页，让用户长按“存储图像”
+    // （这就是 iOS 浏览器里最稳定的“保存到相册”方式）
+    const w = window.open('')
+    if (w) {
+      w.document.write(`<img src="${dataUrl}" style="max-width:100%;height:auto" />`)
+      w.document.title = 'Long press to save'
+    } else {
+      // 弹窗被拦截时：直接跳转
+      location.href = dataUrl
+    }
+  } finally {
+    // ✅ 无论成功失败，都恢复用户原来的状态
+    cardFlipped.value = prevFlipped
   }
 }
 </script>
