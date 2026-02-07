@@ -79,9 +79,11 @@ function calculateAndNavigate() {
     if (answerIdx === -1) return // Should not happen if logic is correct
     
     const question = questions[qIdx]
-    const option = question.options[answerIdx]
+    if (!question) return
+
+    const option = question.options?.[answerIdx]
     
-    if (option.value) {
+    if (option?.value) {
       Object.entries(option.value).forEach(([dim, val]) => {
         scores[dim as keyof typeof scores] += val
       })
