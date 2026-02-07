@@ -6,11 +6,13 @@ const props = withDefaults(
     variant?: Variant
     prevDisabled?: boolean
     nextDisabled?: boolean
+    showNext?: boolean
   }>(),
   {
     variant: 'default',
     prevDisabled: false,
     nextDisabled: false,
+    showNext: true,
   },
 )
 
@@ -48,6 +50,7 @@ const onNext = () => emit('next')
     </button>
 
     <button
+      v-if="showNext"
       class="circle next"
       type="button"
       :class="`is-${props.variant}`"
