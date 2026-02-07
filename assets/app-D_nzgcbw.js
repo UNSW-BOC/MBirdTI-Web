@@ -1,1 +1,0 @@
-import{q as o,k as u}from"./index-B36AES4a.js";const s=o("app",()=>{const g=localStorage.getItem("language"),e=u(g||"zh");function a(t){e.value=t,localStorage.setItem("language",t)}function n(){a(e.value==="zh"?"en":"zh")}return{language:e,setLanguage:a,toggleLanguage:n}});export{s as u};

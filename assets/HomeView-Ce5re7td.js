@@ -1,1 +1,0 @@
-import{d as t,c as o,n as a,u as r,a as n,o as c,_}from"./index-B36AES4a.js";const u="/MBirdTI-Web/assets/which_bird_are_you-CR06re1S.png",l=t({__name:"HomeView",setup(p){const e=n();function s(){e.push("/start")}return(i,m)=>(c(),o("main",{class:"page",style:a({"--desktop-bg":`url(${r(u)})`}),onClick:s},null,4))}}),f=_(l,[["__scopeId","data-v-c062146f"]]);export{f as default};
